@@ -1,12 +1,18 @@
 package ru.job4j.model;
 
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Objects;
-
+@Entity
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String description;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created")
     private Calendar created;
 
     public Post() {

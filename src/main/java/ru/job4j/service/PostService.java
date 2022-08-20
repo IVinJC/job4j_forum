@@ -2,17 +2,18 @@ package ru.job4j.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.model.Post;
+import ru.job4j.repository.PostRepository;
 
-import java.text.Format;
-import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.StreamSupport;
 
 @Service
 public class PostService {
-    private final List<Post> posts = new ArrayList<>();
+    private final PostRepository postRepository;
 
-    public PostService() {
-        posts.add(new Post(0, "Продажа машины", """
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+        /**posts.add(new Post(0, "Продажа машины", """
                 Продаю машину ВАЗ 2109 1987 года серого цвета, не битая, не крашенная))))
                 """, new GregorianCalendar(2022, Calendar.AUGUST, 19)));
         posts.add(new Post(1, "Пропала собака", """
@@ -20,18 +21,21 @@ public class PostService {
                 """, new GregorianCalendar(2022, Calendar.AUGUST, 23)));
         posts.add(new Post(2, "Прогноз погоды на завтра", """
                 Ожидаются местами осадки, температура воздуха 24 градуса
-                """, new GregorianCalendar(2022, Calendar.AUGUST, 24)));
+                """, new GregorianCalendar(2022, Calendar.AUGUST, 24)));*/
     }
 
     public List<Post> getAll() {
-        return posts;
+        return StreamSupport
+                .stream(postRepository.findAll().spliterator(), false)
+                .toList();
     }
 
     public Post findById(int id) {
-        return posts.get(id);
+        return postRepository.findById(id).orElse(null);
     }
 
     public void edit(Post post, int id) {
-        posts.set(id, post);
+        post.setId(id);
+        postRepository.save(post);
     }
 }
