@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Форум job4j</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/post/{id}(id = ${post.id})}" th:object="${post}">
+    <input type="hidden" name="id" th:field="*{id}"/>
+    <label for="name">Enter post name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <hr>
+    <fieldset>
+        <legend>Описание: </legend>
+        <textarea rows="10" cols="45" name="text" th:field="*{description}"></textarea><br>
+    </fieldset>
+<!--    <label for="name">Описание: </label>
+    <input type="text" th:field="*{description}" id="description"/>-->
+    <hr>
+    <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>

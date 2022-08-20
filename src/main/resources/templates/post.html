@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Форум job4j</title>
+</head>
+<body>
+<table>
+    <caption>Посты</caption>
+    <thead>
+    <th scope="col">№</th>
+    <th scope="col">Имя</th>
+    <th scope="col">Обсуждение</th>
+    <th scope="col">Дата создания</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${post.id}">1</td>
+        <td th:text="${post.name}"></td>
+        <td th:text="${post.description}">Обсуждение</td>
+        <td th:text="${post.created}">Создание</td>
+    </tr>
+    <tr>
+        <a th:href="@{|/edit/${post.id}|}">Изменить</a>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
