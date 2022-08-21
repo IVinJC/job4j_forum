@@ -15,6 +15,10 @@ public class PostService {
         this.postRepository = postRepository;
     }
 
+    public void create(Post post) {
+        postRepository.save(post);
+    }
+
     public List<Post> getAll() {
         return StreamSupport
                 .stream(postRepository.findAll().spliterator(), false)

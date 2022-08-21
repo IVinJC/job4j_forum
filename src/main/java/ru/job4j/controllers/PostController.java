@@ -20,7 +20,7 @@ public class PostController {
     public PostController(PostService postService) {
         this.postService = postService;
     }
-    @GetMapping("/create")
+    @PostMapping("/create")
     public String create(Model model, @ModelAttribute("post") Post post) {
         model.addAttribute("post", post);
         return "index";
@@ -38,7 +38,7 @@ public class PostController {
         return "edit";
     }
 
-    @PostMapping("post/{id}")
+    @PostMapping("/post/{id}")
     public String editPost(@ModelAttribute("post") Post post, @PathVariable("id") int id) {
         post.setCreated(new GregorianCalendar());
         postService.edit(post, id);

@@ -12,6 +12,14 @@ public class Authority {
 
     private String authority;
 
+    public Authority() {
+    }
+
+    public Authority(int id, String authority) {
+        this.id = id;
+        this.authority = authority;
+    }
+
     public int getId() {
         return id;
     }
