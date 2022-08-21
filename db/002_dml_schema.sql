@@ -10,3 +10,7 @@ insert into posts (name, description, created) values ('Пропала соба�
 insert into posts (name, description, created) values ('Прогноз погоды на завтра',
                                                        'Ожидаются местами осадки, температура воздуха 24 градуса',
                                                        '2022-03-02 18:14:10');
+
+insert into users(username, password, enabled) values ('user1', 'user1', 'true');
+insert into authorities (username, authority, users_id) values ('user', 'user', 1);
+insert into authorities (username, authority, users_id) values ('user', 'admin', 1);
