@@ -1,11 +1,6 @@
 /*the script deletes entity if it exists
 and creates it again*/
 
-drop table if exists posts;
-drop table if exists authorities;
-drop table if exists users;
-
-
 create table if not exists posts
 (
     id          serial primary key,
